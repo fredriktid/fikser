@@ -145,8 +145,8 @@ const chips = computed(() => {
   bottom: var(--space-3);
   left: var(--space-3);
   padding: 3px var(--space-2);
-  background: rgb(0 0 0 / 0.6);
-  color: #f2f1ec;
+  background: var(--scrim);
+  color: var(--on-player);
   font-size: var(--text-meta);
   letter-spacing: var(--track-caps);
   pointer-events: none;
@@ -172,7 +172,7 @@ const chips = computed(() => {
   position: relative;
   max-width: 36ch;
   padding: var(--space-3) var(--space-4);
-  background: rgb(0 0 0 / 0.7);
+  background: var(--scrim);
   text-align: center;
   font-size: var(--text-body);
 }

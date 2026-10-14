@@ -180,8 +180,8 @@ onBeforeUnmount(() => {
   position: absolute;
   top: var(--space-3);
   padding: 3px var(--space-2);
-  background: rgb(0 0 0 / 0.65);
-  color: #f2f1ec;
+  background: var(--scrim);
+  color: var(--on-player);
   font-size: var(--text-micro);
   font-weight: var(--weight-strong);
 }

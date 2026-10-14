@@ -22,7 +22,7 @@ defineProps<{
   align-items: center;
   padding: var(--space-1) var(--space-4) var(--space-2);
   border: 4px double var(--c);
-  border-radius: 3px;
+  border-radius: var(--radius);
   color: var(--c);
   transform: rotate(-6deg);
   opacity: 0.95;

@@ -25,12 +25,10 @@ defineProps<{
   border-radius: 3px;
   color: var(--c);
   transform: rotate(-6deg);
-  opacity: 0.85;
+  opacity: 0.95;
   mix-blend-mode: multiply;
   pointer-events: none;
   user-select: none;
-  -webkit-mask-image: radial-gradient(circle at 30% 40%, #000 55%, rgb(0 0 0 / 0.75) 75%, #000 100%);
-  mask-image: radial-gradient(circle at 30% 40%, #000 55%, rgb(0 0 0 / 0.75) 75%, #000 100%);
 }
 
 :root[data-theme='dark'] .rubber {
@@ -63,7 +61,7 @@ defineProps<{
 }
 
 .landing {
-  animation: thunk 420ms var(--ease) both;
+  animation: thunk var(--dur) var(--ease) both;
 }
 
 @keyframes thunk {
@@ -78,7 +76,7 @@ defineProps<{
     filter: blur(0);
   }
   100% {
-    opacity: 0.85;
+    opacity: 0.95;
     transform: rotate(-6deg) scale(1);
   }
 }

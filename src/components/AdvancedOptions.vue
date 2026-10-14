@@ -29,7 +29,7 @@ function nullable(e: Event) {
 <template>
   <details class="adv">
     <summary>
-      <span>Advanced: format, quality, size, frame rate</span>
+      <span>Format, quality, size, frame rate</span>
       <Icon name="chevron" />
     </summary>
 

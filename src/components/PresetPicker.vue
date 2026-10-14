@@ -34,7 +34,7 @@ const { activePreset, applyPreset, estimates, source, phase } = useConverter()
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  min-height: 46px;
+  min-height: 42px;
   margin: 0 calc(var(--space-5) * -1);
   padding: 6px var(--space-5);
   border-top: 1px dotted var(--rule-soft);
@@ -92,16 +92,18 @@ input:focus-visible + .radio {
 .text {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--space-2);
 }
 
 strong {
-  display: block;
   font-weight: var(--weight-label);
 }
 
 
 small {
-  display: block;
   color: var(--ink-muted);
   font-size: var(--text-meta);
 }

@@ -85,7 +85,7 @@ kbd {
   opacity: 0.75;
 }
 
-@media (hover: none) {
+@media (hover: none), (max-width: 760px) {
   kbd {
     display: none;
   }

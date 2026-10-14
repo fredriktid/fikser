@@ -14,7 +14,7 @@ import VideoStage from './components/VideoStage.vue'
 import { useConverter } from './composables/useConverter'
 import { CREDIT } from './credit'
 
-const { phase, source, open, convert, cancel, setTrimEdge, loadEngine, engine } = useConverter()
+const { phase, source, open, convert, cancel, setTrimEdge, loadEngine, engine, togglePlay } = useConverter()
 const dragging = ref(false)
 let depth = 0
 
@@ -61,6 +61,10 @@ function onKey(e: KeyboardEvent) {
     return
   }
   if (typing || e.metaKey || e.ctrlKey || e.altKey || !source.value || phase.value === 'converting') return
+  if (e.key === ' ' && phase.value !== 'done' && !target.closest('button, a, input, select, summary, [role=log]')) {
+    e.preventDefault()
+    togglePlay()
+  }
   if (e.key === 'i' || e.key === 'I') setTrimEdge('start')
   if (e.key === 'o' || e.key === 'O') setTrimEdge('end')
 }
@@ -259,12 +263,9 @@ onBeforeUnmount(() => {
 }
 
 .dock {
-  position: sticky;
-  bottom: 0;
   margin-top: auto;
   padding-top: var(--space-3);
-  background: linear-gradient(to bottom, transparent, var(--paper-2) var(--space-3));
-  z-index: 2;
+  background: var(--paper-2);
 }
 
 .perf {
@@ -372,9 +373,6 @@ onBeforeUnmount(() => {
     position: static;
     max-height: none;
     overflow: visible;
-  }
-  .dock {
-    position: static;
   }
   .footer {
     padding: var(--space-4);

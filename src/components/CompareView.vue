@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from 'vue'
 import { useConverter } from '../composables/useConverter'
-import { bytes, clock } from '../lib/format'
+import { bytes } from '../lib/format'
+import TransportBar from './TransportBar.vue'
 import Icon from './ui/Icon.vue'
 
 const { source, result, trim, isTrimmed } = useConverter()
@@ -47,9 +48,9 @@ async function toggle() {
   }
 }
 
-function seek(e: Event) {
+function seek(t: number) {
   if (!after.value) return
-  after.value.currentTime = Number((e.target as HTMLInputElement).value)
+  after.value.currentTime = t
   syncBefore()
 }
 
@@ -90,17 +91,12 @@ onBeforeUnmount(() => {
         <span class="tag left caps">Before · {{ bytes(source.file.size) }}</span>
         <span class="tag right caps">After · {{ bytes(result.blob.size) }}</span>
       </div>
-      <div class="controls">
-        <button class="play" type="button" :aria-label="playing ? 'Pause both' : 'Play both'" @click="toggle">
-          <Icon :name="playing ? 'pause' : 'play'" />
-        </button>
-        <input class="time" type="range" min="0" :max="length || 0" step="0.01" :value="time" aria-label="Position" @input="seek" />
-        <span class="mono clock">{{ clock(time) }} / {{ clock(length) }}</span>
+      <TransportBar :playing="playing" :time="time" :length="length" label="both" @toggle="toggle" @seek="seek">
         <label class="split">
           <span class="sr-only">Comparison divider position</span>
           <input type="range" min="0" max="100" step="1" v-model.number="split" />
         </label>
-      </div>
+      </TransportBar>
       <p class="help">Drag across the picture to move the divider. The left side is your original, the right side the converted file.</p>
     </template>
 
@@ -198,37 +194,14 @@ onBeforeUnmount(() => {
   right: var(--space-3);
 }
 
-.controls {
-  display: grid;
-  grid-template-columns: auto 1fr auto 140px;
-  align-items: center;
-  gap: var(--space-3);
+.split {
+  flex: none;
+  width: 140px;
 }
 
-.play {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: var(--rule-w) solid var(--rule);
-  border-radius: var(--radius);
-  background: var(--rule);
-  color: var(--paper);
-}
-
-.play svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-input[type='range'] {
+.split input {
   width: 100%;
   accent-color: var(--rule);
-}
-
-.clock {
-  font-size: var(--text-meta);
 }
 
 .help {
@@ -295,11 +268,11 @@ figcaption {
 }
 
 @media (max-width: 640px) {
-  .controls {
-    grid-template-columns: auto 1fr auto;
+  .compare :deep(.transport) {
+    flex-wrap: wrap;
   }
   .split {
-    grid-column: 1 / -1;
+    width: 100%;
   }
   .pair {
     grid-template-columns: 1fr;

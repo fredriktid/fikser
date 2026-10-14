@@ -286,6 +286,13 @@ function reset() {
   phase.value = 'empty'
 }
 
+function togglePlay() {
+  const el = player.value
+  if (!el) return
+  if (el.paused) el.play()
+  else el.pause()
+}
+
 function seek(time: number) {
   if (player.value) player.value.currentTime = time
   playhead.value = time
@@ -341,6 +348,7 @@ export function useConverter() {
     playhead,
     player,
     seek,
+    togglePlay,
     setTrimEdge,
     resetTrim,
   }

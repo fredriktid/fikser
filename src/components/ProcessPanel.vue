@@ -155,7 +155,7 @@ h2 {
   height: 100%;
   background: var(--rule);
   transform-origin: left;
-  transition: transform 240ms linear;
+  transition: transform var(--dur) var(--ease);
 }
 
 .cells {

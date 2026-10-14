@@ -2,10 +2,12 @@
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useConverter } from '../composables/useConverter'
 import { bytes, clock } from '../lib/format'
+import TransportBar from './TransportBar.vue'
 import Icon from './ui/Icon.vue'
 
-const { source, frames, playhead, player, setPlayable, reset, phase } = useConverter()
+const { source, frames, playhead, player, setPlayable, reset, phase, duration, seek, togglePlay } = useConverter()
 const video = ref<HTMLMediaElement | null>(null)
+const playing = ref(false)
 
 watch(video, (el) => (player.value = el), { immediate: true })
 onBeforeUnmount(() => (player.value = null))
@@ -50,23 +52,35 @@ const chips = computed(() => {
         v-if="source.playable && !audioOnly"
         ref="video"
         :src="source.url"
-        controls
         playsinline
         preload="auto"
+        @click="togglePlay"
+        @play="playing = true"
+        @pause="playing = false"
         @timeupdate="onTime"
         @seeked="onTime"
         @error="setPlayable(false)"
       />
       <template v-else-if="audioOnly">
         <Icon name="film" class="placeholder-icon" />
-        <audio ref="video" :src="source.url" controls @timeupdate="onTime" />
+        <audio ref="video" :src="source.url" preload="auto" @play="playing = true" @pause="playing = false" @timeupdate="onTime" />
       </template>
       <div v-else class="unplayable">
         <img v-if="poster" :src="poster" alt="" />
         <p>Your browser can't play this format, but ffmpeg can still convert it.</p>
       </div>
-      <span v-if="!audioOnly" class="tc mono" aria-hidden="true">{{ timecode }}</span>
+      <span v-if="!audioOnly && source.playable" class="tc mono" aria-hidden="true">{{ timecode }}</span>
     </div>
+
+    <TransportBar
+      v-if="source.playable || audioOnly"
+      :playing="playing"
+      :time="playhead"
+      :length="duration"
+      label="source"
+      @toggle="togglePlay"
+      @seek="seek"
+    />
 
     <div class="meta">
       <ul class="chips mono" aria-label="File details">
@@ -122,9 +136,13 @@ const chips = computed(() => {
   opacity: 0.6;
 }
 
+.player video {
+  cursor: pointer;
+}
+
 .tc {
   position: absolute;
-  top: var(--space-3);
+  bottom: var(--space-3);
   left: var(--space-3);
   padding: 3px var(--space-2);
   background: rgb(0 0 0 / 0.6);

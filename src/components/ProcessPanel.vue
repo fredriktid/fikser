@@ -124,7 +124,7 @@ const shortcut = navigator.platform.toLowerCase().includes('mac') ? '⌘ Enter' 
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  min-height: 56px;
+  min-height: 44px;
 }
 
 h2 .num {
@@ -252,7 +252,7 @@ dd {
 
 .stamp {
   flex: none;
-  margin: -4px -4px -8px 0;
+  margin: -10px -4px -14px 0;
 }
 
 

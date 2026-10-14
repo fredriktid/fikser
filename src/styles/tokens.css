@@ -1,0 +1,101 @@
+:root {
+  --font-sans: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.875rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.375rem;
+  --text-display: clamp(2.5rem, 4.2vw, 4rem);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  --radius: 2px;
+  --rule-w: 1.5px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 320ms;
+
+  --header-h: 64px;
+
+  color-scheme: light;
+  --ground: #efeee8;
+  --paper: #f7f6f1;
+  --paper-2: #e9e8e0;
+  --ink: #16140f;
+  --ink-muted: #57544a;
+  --rule: #1c3faa;
+  --rule-soft: rgb(28 63 170 / 0.38);
+  --tint: rgb(28 63 170 / 0.07);
+  --band: #e9b730;
+  --band-ink: #16140f;
+  --accent: #1c3faa;
+  --on-accent: #f7f6f1;
+  --stamp: #5b3fd0;
+  --danger: #b8281f;
+  --ok: #1d7a46;
+  --player: #16140f;
+  --on-player: #f2f1ec;
+  --code-bg: #ffffff;
+  --focus: #5b3fd0;
+  --selection: rgb(233 183 48 / 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --ground: #100f0c;
+    --paper: #181612;
+    --paper-2: #211e18;
+    --ink: #ede8da;
+    --ink-muted: #a8a190;
+    --rule: #e9a93a;
+    --rule-soft: rgb(233 169 58 / 0.36);
+    --tint: rgb(233 169 58 / 0.09);
+    --band: #c98f22;
+    --band-ink: #100f0c;
+    --accent: #e9a93a;
+    --on-accent: #100f0c;
+    --stamp: #b3a2ff;
+    --danger: #ff7a66;
+    --ok: #6fd39a;
+    --player: #050504;
+    --on-player: #ede8da;
+    --code-bg: #0b0a08;
+    --focus: #b3a2ff;
+    --selection: rgb(233 169 58 / 0.4);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --ground: #100f0c;
+  --paper: #181612;
+  --paper-2: #211e18;
+  --ink: #ede8da;
+  --ink-muted: #a8a190;
+  --rule: #e9a93a;
+  --rule-soft: rgb(233 169 58 / 0.36);
+  --tint: rgb(233 169 58 / 0.09);
+  --band: #c98f22;
+  --band-ink: #100f0c;
+  --accent: #e9a93a;
+  --on-accent: #100f0c;
+  --stamp: #b3a2ff;
+  --danger: #ff7a66;
+  --ok: #6fd39a;
+  --player: #050504;
+  --on-player: #ede8da;
+  --code-bg: #0b0a08;
+  --focus: #b3a2ff;
+  --selection: rgb(233 169 58 / 0.4);
+}

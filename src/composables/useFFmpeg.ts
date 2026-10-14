@@ -65,7 +65,7 @@ async function load(): Promise<FFmpeg> {
         state.multithreaded = false
         state.threads = 1
       }
-      pushLog('info', `[fixer] ffmpeg.wasm loaded (${state.multithreaded ? `multithreaded, ${state.threads} threads` : 'single thread'})`)
+      pushLog('info', `[fikser] ffmpeg.wasm loaded (${state.multithreaded ? `multithreaded, ${state.threads} threads` : 'single thread'})`)
       instance.value = ffmpeg
       state.status = 'ready'
       return ffmpeg
@@ -95,7 +95,7 @@ function run(args: string[], onLine?: (line: string) => void): Promise<number> {
         ffmpeg.terminate()
         instance.value = null
         state.status = 'idle'
-        pushLog('error', `[fixer] ffmpeg crashed (${err instanceof Error ? err.message : err}); restarting engine`)
+        pushLog('error', `[fikser] ffmpeg crashed (${err instanceof Error ? err.message : err}); restarting engine`)
       }
       throw err
     } finally {
@@ -149,7 +149,7 @@ async function cancel(): Promise<void> {
   lineListener = null
   ffmpeg?.terminate()
   queue = Promise.resolve()
-  pushLog('info', '[fixer] cancelled; restarting engine')
+  pushLog('info', '[fikser] cancelled; restarting engine')
   state.status = 'idle'
   await load()
 }

@@ -2,7 +2,7 @@ import { computed, ref } from 'vue'
 
 type Theme = 'light' | 'dark'
 
-const KEY = 'fixer-theme'
+const KEY = 'fikser-theme'
 const media = window.matchMedia('(prefers-color-scheme: dark)')
 const stored = ref<Theme | null>(read())
 const system = ref<Theme>(media.matches ? 'dark' : 'light')

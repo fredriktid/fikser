@@ -27,7 +27,7 @@ const threads = computed(() => (engine.multithreaded ? `${engine.threads} thread
 <template>
   <header class="header">
     <div class="brand">
-      <h1 class="logo">Fixer</h1>
+      <h1 class="logo">Fikser</h1>
       <span class="sub">Video lab · runs in your browser</span>
     </div>
     <div class="right">

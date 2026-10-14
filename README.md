@@ -1,8 +1,10 @@
-# Fixer
+# Fikser
 
-Convert, shrink, trim and turn videos into GIFs without uploading them anywhere. Fixer runs ffmpeg in the browser through [ffmpeg.wasm](https://ffmpegwasm.netlify.app/), so the file never leaves your machine.
+Convert, shrink, trim and turn videos into GIFs without uploading them anywhere. Fikser runs ffmpeg in the browser through [ffmpeg.wasm](https://ffmpegwasm.netlify.app/), so the file never leaves your machine.
 
-![Fixer with a clip loaded](docs/screenshot.png)
+Try it at [fikser.dev](https://fikser.dev).
+
+![Fikser with a clip loaded](docs/screenshot.png)
 
 ## What it does
 

@@ -30,5 +30,3 @@ CLAUDE.md
 .claude/
 .impeccable/
 
-# Copied from node_modules on install
-public/ffmpeg/

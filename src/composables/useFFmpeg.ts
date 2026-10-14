@@ -3,7 +3,7 @@ import { fetchFile, toBlobURL } from '@ffmpeg/util'
 import { reactive, readonly, shallowRef } from 'vue'
 import { emptyProbe, probeLine, progressLine, type ProbeInfo, type ProgressSample } from '../lib/parseLog'
 
-const base = `${import.meta.env.BASE_URL}ffmpeg`
+const cdn = (pkg: string) => `https://cdn.jsdelivr.net/npm/@ffmpeg/${pkg}@${__FFMPEG_CORE_VERSION__}/dist/esm`
 
 export type EngineStatus = 'idle' | 'loading' | 'ready' | 'busy' | 'error'
 
@@ -51,16 +51,16 @@ async function load(): Promise<FFmpeg> {
     try {
       if (canThread) {
         await ffmpeg.load({
-          coreURL: await toBlobURL(`${base}/core-mt/ffmpeg-core.js`, 'text/javascript'),
-          wasmURL: await toBlobURL(`${base}/core-mt/ffmpeg-core.wasm`, 'application/wasm'),
-          workerURL: await toBlobURL(`${base}/core-mt/ffmpeg-core.worker.js`, 'text/javascript'),
+          coreURL: await toBlobURL(`${cdn('core-mt')}/ffmpeg-core.js`, 'text/javascript'),
+          wasmURL: await toBlobURL(`${cdn('core-mt')}/ffmpeg-core.wasm`, 'application/wasm'),
+          workerURL: await toBlobURL(`${cdn('core-mt')}/ffmpeg-core.worker.js`, 'text/javascript'),
         })
         state.multithreaded = true
         state.threads = Math.min(navigator.hardwareConcurrency || 4, 4)
       } else {
         await ffmpeg.load({
-          coreURL: await toBlobURL(`${base}/core/ffmpeg-core.js`, 'text/javascript'),
-          wasmURL: await toBlobURL(`${base}/core/ffmpeg-core.wasm`, 'application/wasm'),
+          coreURL: await toBlobURL(`${cdn('core')}/ffmpeg-core.js`, 'text/javascript'),
+          wasmURL: await toBlobURL(`${cdn('core')}/ffmpeg-core.wasm`, 'application/wasm'),
         })
         state.multithreaded = false
         state.threads = 1

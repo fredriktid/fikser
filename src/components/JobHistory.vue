@@ -41,15 +41,15 @@ const label = { done: 'Done', void: 'Void', failed: 'Failed' } as const
 }
 
 h2 {
-  font-size: var(--text-lg);
-  font-weight: 700;
+  font-size: var(--text-head);
+  font-weight: var(--weight-strong);
   color: var(--rule);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 
 td {
@@ -60,7 +60,7 @@ td {
 
 .no {
   color: var(--rule);
-  font-weight: 700;
+  font-weight: var(--weight-strong);
   white-space: nowrap;
 }
 
@@ -81,8 +81,8 @@ td:last-child {
   padding: 0 var(--space-2);
   border: 2px solid var(--stamp);
   color: var(--stamp);
-  font-weight: 800;
-  font-size: var(--text-sm);
+  font-weight: var(--weight-display);
+  font-size: var(--text-meta);
   transform: rotate(-3deg);
 }
 

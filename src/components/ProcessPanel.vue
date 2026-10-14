@@ -132,14 +132,14 @@ h2 .num {
 }
 
 h2 {
-  font-size: var(--text-lg);
-  font-weight: 700;
+  font-size: var(--text-head);
+  font-weight: var(--weight-strong);
   color: var(--rule);
 }
 
 .num {
-  font-size: var(--text-sm);
-  font-weight: 700;
+  font-size: var(--text-meta);
+  font-weight: var(--weight-strong);
   color: var(--rule);
 }
 
@@ -181,18 +181,18 @@ h2 {
 
 dt {
   font-family: var(--font-sans);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  font-stretch: 75%;
+  font-size: var(--text-micro);
+  font-weight: var(--weight-label);
+  font-stretch: var(--width-caps);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--track-label);
   color: var(--ink-muted);
 }
 
 dd {
   margin: 0;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: var(--text-data);
+  font-weight: var(--weight-strong);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -209,20 +209,9 @@ dd {
 .go {
   min-width: 200px;
   min-height: 52px;
-  font-size: var(--text-lg);
+  font-size: var(--text-head);
 }
 
-kbd {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: none;
-  padding: 1px 6px;
-  border: 1px solid currentColor;
-  border-radius: var(--radius);
-  opacity: 0.75;
-}
 
 .notes {
   display: flex;
@@ -230,7 +219,7 @@ kbd {
   gap: var(--space-2);
   padding: 0;
   list-style: none;
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 
 .notes b {
@@ -244,7 +233,7 @@ kbd {
 
 .note {
   color: var(--ink-muted);
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
   max-width: 44ch;
 }
 
@@ -252,7 +241,7 @@ kbd {
   display: flex;
   gap: var(--space-2);
   color: var(--danger);
-  font-weight: 600;
+  font-weight: var(--weight-label);
 }
 
 .error svg {
@@ -266,11 +255,6 @@ kbd {
   margin: -4px -4px -8px 0;
 }
 
-@media (hover: none), (max-width: 760px) {
-  kbd {
-    display: none;
-  }
-}
 
 @media (max-width: 520px) {
   .cells {

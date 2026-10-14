@@ -186,8 +186,8 @@ onBeforeUnmount(() => {
   padding: 3px var(--space-2);
   background: rgb(0 0 0 / 0.65);
   color: #f2f1ec;
-  font-size: var(--text-xs);
-  font-weight: 700;
+  font-size: var(--text-micro);
+  font-weight: var(--weight-strong);
 }
 
 .tag.left {
@@ -228,12 +228,13 @@ input[type='range'] {
 }
 
 .clock {
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 
 .help {
+  max-width: 65ch;
   color: var(--ink-muted);
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 
 .pair {
@@ -258,8 +259,8 @@ figure img {
 }
 
 figcaption {
-  font-size: var(--text-sm);
-  font-weight: 700;
+  font-size: var(--text-meta);
+  font-weight: var(--weight-strong);
   color: var(--rule);
 }
 

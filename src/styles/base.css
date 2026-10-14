@@ -17,7 +17,8 @@ body {
   min-height: 100dvh;
   background: var(--ground);
   color: var(--ink);
-  font: 400 var(--text-md) / 1.45 var(--font-sans);
+  font: var(--weight-body) var(--text-body) / 1.5 var(--font-sans);
+  letter-spacing: var(--track-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -67,9 +68,27 @@ a {
 }
 
 .caps {
-  font-stretch: 75%;
+  font-stretch: var(--width-caps);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--track-caps);
+}
+
+kbd {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: var(--weight-body);
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 1px 6px;
+  border: 1px solid currentColor;
+  border-radius: var(--radius);
+  opacity: 0.75;
+}
+
+@media (hover: none) {
+  kbd {
+    display: none;
+  }
 }
 
 .sr-only {
@@ -95,11 +114,11 @@ a {
   border-radius: var(--radius);
   background: transparent;
   color: var(--rule);
-  font-weight: 700;
-  font-size: var(--text-md);
-  font-stretch: 80%;
+  font-weight: var(--weight-strong);
+  font-size: var(--text-body);
+  font-stretch: var(--width-caps);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--track-label);
   text-decoration: none;
   transition:
     background-color var(--dur) var(--ease),

@@ -48,18 +48,18 @@ defineProps<{
 }
 
 .t {
-  font-size: 1.5rem;
-  font-weight: 800;
-  font-stretch: 68%;
+  font-size: var(--text-stamp);
+  font-weight: var(--weight-display);
+  font-stretch: var(--width-display);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: var(--track-caps);
   line-height: 1.05;
 }
 
 .s {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: var(--text-meta);
+  font-weight: var(--weight-strong);
+  letter-spacing: var(--track-caps);
 }
 
 .landing {

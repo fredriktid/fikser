@@ -96,22 +96,19 @@ input:focus-visible + .radio {
 
 strong {
   display: block;
-  font-weight: 650;
+  font-weight: var(--weight-label);
 }
 
-.sel strong {
-  font-weight: 800;
-}
 
 small {
   display: block;
   color: var(--ink-muted);
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 
 .est {
   color: var(--rule);
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
   white-space: nowrap;
 }
 
@@ -125,6 +122,6 @@ fieldset:disabled .opt {
   padding-top: var(--space-2);
   border-top: 1px dotted var(--rule-soft);
   color: var(--ink-muted);
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 </style>

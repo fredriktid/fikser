@@ -2,12 +2,26 @@
   --font-sans: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
 
-  --text-xs: 0.75rem;
-  --text-sm: 0.8125rem;
-  --text-md: 0.875rem;
-  --text-lg: 1.0625rem;
-  --text-xl: 1.375rem;
+  --text-micro: 0.75rem;
+  --text-meta: 0.8125rem;
+  --text-body: 0.9375rem;
+  --text-data: 1rem;
+  --text-head: 1.0625rem;
+  --text-stamp: 1.5rem;
+  --text-brand: 2.125rem;
   --text-display: clamp(2.5rem, 4.2vw, 4rem);
+
+  --weight-body: 400;
+  --weight-label: 600;
+  --weight-strong: 700;
+  --weight-display: 800;
+
+  --track-caps: 0.08em;
+  --track-label: 0.1em;
+  --track-body: 0;
+
+  --width-caps: 75%;
+  --width-display: 68%;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -73,6 +87,8 @@
     --code-bg: #0b0a08;
     --focus: #b3a2ff;
     --selection: rgb(233 169 58 / 0.4);
+    --weight-body: 430;
+    --track-body: 0.005em;
   }
 }
 
@@ -98,4 +114,6 @@
   --code-bg: #0b0a08;
   --focus: #b3a2ff;
   --selection: rgb(233 169 58 / 0.4);
+  --weight-body: 430;
+  --track-body: 0.005em;
 }

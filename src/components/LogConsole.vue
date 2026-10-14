@@ -66,14 +66,14 @@ watch(open, async (v) => {
 }
 
 .toggle .caps {
-  font-weight: 700;
-  font-size: var(--text-md);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-body);
 }
 
 .count {
   margin-left: auto;
   color: var(--ink-muted);
-  font-size: var(--text-xs);
+  font-size: var(--text-micro);
 }
 
 .chev {
@@ -90,7 +90,7 @@ watch(open, async (v) => {
   padding: var(--space-3) var(--space-4);
   border-top: 1px dotted var(--rule-soft);
   background: var(--code-bg);
-  font-size: var(--text-xs);
+  font-size: var(--text-micro);
   line-height: 1.6;
 }
 
@@ -101,7 +101,7 @@ watch(open, async (v) => {
 
 .line[data-type='command'] {
   color: var(--rule);
-  font-weight: 700;
+  font-weight: var(--weight-strong);
   margin-top: var(--space-2);
 }
 

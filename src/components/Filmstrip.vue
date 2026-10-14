@@ -108,15 +108,15 @@ function scrub(e: PointerEvent) {
 }
 
 h2 {
-  font-size: var(--text-lg);
-  font-weight: 700;
+  font-size: var(--text-head);
+  font-weight: var(--weight-strong);
   color: var(--rule);
 }
 
 .range {
   display: flex;
   gap: var(--space-2);
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 
 .len {
@@ -271,9 +271,9 @@ h2 {
   grid-template-columns: repeat(8, 1fr);
   padding: 0;
   list-style: none;
-  font-size: var(--text-xs);
+  font-size: var(--text-micro);
   color: var(--ink-muted);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--track-caps);
 }
 
 .tools {
@@ -285,20 +285,8 @@ h2 {
 
 .tools .btn {
   min-height: 36px;
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 
-@media (hover: none) {
-  kbd {
-    display: none;
-  }
-}
 
-kbd {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  padding: 1px 6px;
-  border: 1px solid var(--rule-soft);
-  border-radius: var(--radius);
-}
 </style>

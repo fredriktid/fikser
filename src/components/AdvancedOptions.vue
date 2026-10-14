@@ -176,11 +176,11 @@ summary svg {
   flex-direction: column;
   gap: var(--space-1);
   min-width: 0;
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 
 .field > span:first-child {
-  font-weight: 650;
+  font-weight: var(--weight-label);
 }
 
 .field.wide {
@@ -190,7 +190,7 @@ summary svg {
 .field b {
   margin-left: var(--space-2);
   color: var(--rule);
-  font-weight: 700;
+  font-weight: var(--weight-strong);
 }
 
 select,
@@ -249,7 +249,7 @@ input[type='range'] {
 .seg label.on {
   background: var(--rule);
   color: var(--paper);
-  font-weight: 650;
+  font-weight: var(--weight-label);
 }
 
 .seg input {
@@ -277,7 +277,7 @@ input[type='range'] {
 }
 
 .check span {
-  font-weight: 650;
+  font-weight: var(--weight-label);
 }
 
 @media (max-width: 420px) {

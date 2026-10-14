@@ -70,8 +70,8 @@ async function makeSample() {
 
 .title {
   font-size: var(--text-display);
-  font-weight: 800;
-  font-stretch: 72%;
+  font-weight: var(--weight-display);
+  font-stretch: var(--width-display);
   line-height: 0.98;
   letter-spacing: -0.01em;
   text-transform: uppercase;
@@ -81,7 +81,7 @@ async function makeSample() {
 
 .lede {
   max-width: 52ch;
-  font-size: var(--text-lg);
+  font-size: var(--text-head);
   color: var(--ink-muted);
 }
 
@@ -93,7 +93,7 @@ async function makeSample() {
 }
 
 .hint {
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
   color: var(--ink-muted);
   max-width: 60ch;
 }

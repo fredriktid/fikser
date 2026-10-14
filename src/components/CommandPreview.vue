@@ -37,7 +37,7 @@ async function copy() {
 code {
   display: block;
   padding: var(--space-3) 48px var(--space-3) var(--space-3);
-  font-size: var(--text-xs);
+  font-size: var(--text-micro);
   line-height: 1.6;
   color: var(--ink);
   overflow-wrap: anywhere;

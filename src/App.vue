@@ -198,8 +198,8 @@ onBeforeUnmount(() => {
   border: var(--rule-w) dashed var(--rule);
   border-radius: var(--radius);
   color: var(--rule);
-  font-weight: 700;
-  font-size: var(--text-lg);
+  font-weight: var(--weight-strong);
+  font-size: var(--text-head);
   animation: pulse 1.4s var(--ease) infinite alternate;
 }
 
@@ -214,7 +214,7 @@ onBeforeUnmount(() => {
   padding: var(--space-3) var(--space-4);
   border: var(--rule-w) solid var(--danger);
   color: var(--danger);
-  font-weight: 600;
+  font-weight: var(--weight-label);
 }
 
 .rail {
@@ -246,14 +246,14 @@ onBeforeUnmount(() => {
   align-items: baseline;
   gap: var(--space-3);
   margin-bottom: var(--space-2);
-  font-size: var(--text-lg);
-  font-weight: 700;
+  font-size: var(--text-head);
+  font-weight: var(--weight-strong);
   color: var(--rule);
 }
 
 .sh em {
   font-style: normal;
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
   padding: 0 6px;
   border: var(--rule-w) solid var(--rule);
 }
@@ -304,7 +304,7 @@ onBeforeUnmount(() => {
   max-width: 1680px;
   margin: 0 auto;
   padding: var(--space-4) var(--space-8) var(--space-6);
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
   color: var(--ink-muted);
 }
 
@@ -323,8 +323,8 @@ onBeforeUnmount(() => {
   padding: var(--space-6) var(--space-10);
   border: 4px double currentColor;
   font-size: var(--text-display);
-  font-weight: 800;
-  font-stretch: 68%;
+  font-weight: var(--weight-display);
+  font-stretch: var(--width-display);
   transform: rotate(-4deg);
 }
 

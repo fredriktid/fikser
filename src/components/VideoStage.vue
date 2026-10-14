@@ -50,10 +50,9 @@ const chips = computed(() => {
         v-if="source.playable && !audioOnly"
         ref="video"
         :src="source.url"
-        :poster="poster"
         controls
         playsinline
-        preload="metadata"
+        preload="auto"
         @timeupdate="onTime"
         @seeked="onTime"
         @error="setPlayable(false)"
@@ -130,8 +129,8 @@ const chips = computed(() => {
   padding: 3px var(--space-2);
   background: rgb(0 0 0 / 0.6);
   color: #f2f1ec;
-  font-size: var(--text-sm);
-  letter-spacing: 0.05em;
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-caps);
   pointer-events: none;
 }
 
@@ -157,7 +156,7 @@ const chips = computed(() => {
   padding: var(--space-3) var(--space-4);
   background: rgb(0 0 0 / 0.7);
   text-align: center;
-  font-size: var(--text-md);
+  font-size: var(--text-body);
 }
 
 .meta {
@@ -181,8 +180,8 @@ const chips = computed(() => {
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   color: var(--rule);
-  font-size: var(--text-xs);
-  font-weight: 500;
+  font-size: var(--text-micro);
+  font-weight: var(--weight-body);
   white-space: nowrap;
 }
 
@@ -201,6 +200,6 @@ const chips = computed(() => {
 .meta .btn {
   min-height: 32px;
   flex: none;
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
 }
 </style>

@@ -7,7 +7,7 @@ import Icon from './ui/Icon.vue'
 const { engine, jobNumber } = useConverter()
 const { theme, toggle } = useTheme()
 
-const engineLabel = computed(() => {
+const status = computed(() => {
   switch (engine.status) {
     case 'idle':
     case 'loading':
@@ -15,11 +15,13 @@ const engineLabel = computed(() => {
     case 'error':
       return 'Engine failed'
     case 'busy':
-      return engine.multithreaded ? `Working · ${engine.threads} threads` : 'Working · 1 thread'
+      return 'Working'
     default:
-      return engine.multithreaded ? `Engine ready · ${engine.threads} threads` : 'Engine ready · 1 thread'
+      return 'Engine ready'
   }
 })
+
+const threads = computed(() => (engine.multithreaded ? `${engine.threads} threads` : '1 thread'))
 </script>
 
 <template>
@@ -31,7 +33,7 @@ const engineLabel = computed(() => {
     <div class="right">
       <span class="pill mono" :data-status="engine.status" role="status">
         <i aria-hidden="true" />
-        {{ engineLabel }}
+        {{ status }}<span v-if="engine.status === 'ready' || engine.status === 'busy'" class="detail"> · {{ threads }}</span>
       </span>
       <span class="job mono" aria-label="Next job number">JOB № {{ String(jobNumber).padStart(4, '0') }}</span>
       <button class="theme" type="button" :aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'" @click="toggle">
@@ -46,7 +48,7 @@ const engineLabel = computed(() => {
   position: sticky;
   top: 0;
   z-index: 10;
-  height: var(--header-h);
+  min-height: var(--header-h);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -64,9 +66,9 @@ const engineLabel = computed(() => {
 }
 
 .logo {
-  font-size: 2.125rem;
-  font-weight: 800;
-  font-stretch: 68%;
+  font-size: var(--text-brand);
+  font-weight: var(--weight-display);
+  font-stretch: var(--width-display);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   line-height: 1;
@@ -76,7 +78,7 @@ const engineLabel = computed(() => {
   margin-left: var(--space-4);
   padding-left: var(--space-4);
   border-left: var(--rule-w) solid currentColor;
-  font-size: var(--text-sm);
+  font-size: var(--text-meta);
   white-space: nowrap;
 }
 
@@ -93,10 +95,10 @@ const engineLabel = computed(() => {
   padding: 5px var(--space-3);
   border: var(--rule-w) solid currentColor;
   border-radius: 999px;
-  font-size: var(--text-xs);
-  font-weight: 700;
+  font-size: var(--text-micro);
+  font-weight: var(--weight-strong);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--track-caps);
   white-space: nowrap;
 }
 
@@ -120,8 +122,8 @@ const engineLabel = computed(() => {
 }
 
 .job {
-  font-size: var(--text-md);
-  font-weight: 700;
+  font-size: var(--text-body);
+  font-weight: var(--weight-strong);
   white-space: nowrap;
 }
 
@@ -149,7 +151,8 @@ const engineLabel = computed(() => {
     padding: 0 var(--space-4);
   }
   .sub,
-  .job {
+  .job,
+  .pill .detail {
     display: none;
   }
   .right {

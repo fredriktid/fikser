@@ -20,13 +20,13 @@ Convert, shrink, trim and turn videos into GIFs without uploading them anywhere.
 ## Running it
 
 ```sh
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ```sh
-npm run build
-npm run preview
+pnpm build
+pnpm preview
 ```
 
 ## How it works
@@ -51,7 +51,7 @@ The Vite dev and preview servers set these in `vite.config.ts`. For hosting, `pu
 
 ### Things I ran into
 
-- **Where the core lives.** The ffmpeg core is about 31 MB of wasm, which is over the 25 MiB per-file limit on Cloudflare Workers, and Vite's dev server rewrites imports in anything it serves, which breaks ffmpeg's pthread worker. So the core is loaded from jsDelivr through `toBlobURL`, pinned to the version of `@ffmpeg/core-mt` in `package-lock.json`. jsDelivr sends `Access-Control-Allow-Origin: *`, which satisfies `require-corp`.
+- **Where the core lives.** The ffmpeg core is about 31 MB of wasm, which is over the 25 MiB per-file limit on Cloudflare Workers, and Vite's dev server rewrites imports in anything it serves, which breaks ffmpeg's pthread worker. So the core is loaded from jsDelivr through `toBlobURL`, pinned to the version of `@ffmpeg/core-mt` in `pnpm-lock.yaml`. jsDelivr sends `Access-Control-Allow-Origin: *`, which satisfies `require-corp`.
 - **Thread limits.** The multithreaded core has a fixed pool of 32 pthreads. Letting ffmpeg pick its own thread count (or using more than about 4) deadlocks when decoding and encoding audio and video at the same time. Every command gets an explicit `-threads`.
 - **Two inputs deadlock** in the same way, so the test clip comes from a single `lavfi` graph with two outputs instead of two `-f lavfi` inputs.
 - **VP9 crashes** the multithreaded core with an out-of-bounds memory error, so WebM uses VP8 + Opus. If ffmpeg crashes anyway, the engine restarts and the job is marked as failed.

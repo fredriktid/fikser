@@ -30,3 +30,8 @@ CLAUDE.md
 .claude/
 .impeccable/
 
+
+# Local secrets and wrangler state
+.env
+.dev.vars
+.wrangler

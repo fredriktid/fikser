@@ -8,7 +8,7 @@ Try it at [fikser.dev](https://fikser.dev).
 
 ## What it does
 
-- Drop, pick or paste a video, or make a test clip with ffmpeg's own `testsrc2`
+- Drop, pick or paste a video, or record your screen or camera right in the page
 - Preview with a filmstrip and trim handles (`I` / `O` set in and out at the playhead)
 - Presets for people who don't care about codecs: web MP4, smaller file, high quality, WebM, animated GIF and MP3
 - Advanced options for people who do: container, codec, CRF or target bitrate, max height, frame rate, audio
@@ -50,7 +50,7 @@ The dev and preview servers set them, and so does the hosting config on Cloudfla
 
 - **Where the core lives.** The ffmpeg core is about 31 MB of wasm, which is over the 25 MiB per-file limit on Cloudflare Workers, and Vite's dev server rewrites imports in anything it serves, which breaks ffmpeg's pthread worker. So the core is loaded from jsDelivr through `toBlobURL`, pinned to the installed version of `@ffmpeg/core-mt`. jsDelivr sends `Access-Control-Allow-Origin: *`, which satisfies `require-corp`.
 - **Thread limits.** The multithreaded core has a fixed pool of 32 pthreads. Letting ffmpeg pick its own thread count (or using more than about 4) deadlocks when decoding and encoding audio and video at the same time. Every command gets an explicit `-threads`.
-- **Two inputs deadlock** in the same way, so the test clip comes from a single `lavfi` graph with two outputs instead of two `-f lavfi` inputs.
+- **Two inputs deadlock** in the same way, so anything that needs two sources has to come from a single `lavfi` graph with two outputs.
 - **VP9 crashes** the multithreaded core with an out-of-bounds memory error, so WebM uses VP8 + Opus. If ffmpeg crashes anyway, the engine restarts and the job is marked as failed.
 
 ## Stack

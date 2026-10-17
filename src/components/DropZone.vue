@@ -3,9 +3,10 @@ import { ref } from 'vue'
 import { useConverter } from '../composables/useConverter'
 import Icon from './ui/Icon.vue'
 
-const { open, sample, engine } = useConverter()
+const { open, engine, recorder } = useConverter()
+const canRecord = typeof MediaRecorder !== 'undefined' && !!navigator.mediaDevices?.getUserMedia
+const canScreen = canRecord && !!navigator.mediaDevices?.getDisplayMedia
 const input = ref<HTMLInputElement | null>(null)
-const making = ref(false)
 const over = ref(false)
 
 function pick(e: Event) {
@@ -14,19 +15,10 @@ function pick(e: Event) {
   ;(e.target as HTMLInputElement).value = ''
 }
 
-async function makeSample() {
-  making.value = true
-  try {
-    await sample()
-  } finally {
-    making.value = false
-  }
-}
-
 const lines = [
   ['Service', 'Convert, shrink, trim, or turn a clip into a GIF or MP3'],
   ['Processed', 'On this computer. Nothing is uploaded'],
-  ['Accepted', 'MP4, MOV, WebM, MKV, AVI and most other video'],
+  ['Accepted', 'MP4, MOV, WebM, MKV, AVI and most other video, or a fresh recording of your camera or screen'],
   ['Collect', 'Download from the claim stub when it is stamped'],
 ]
 </script>
@@ -51,9 +43,13 @@ const lines = [
           <Icon name="upload" />
           Choose a video
         </button>
-        <button class="btn" type="button" :disabled="making || engine.status === 'error'" @click="makeSample">
-          <Icon name="pattern" />
-          {{ making ? 'Making test clip…' : 'Use a test clip' }}
+        <button v-if="canScreen" class="btn" type="button" :disabled="engine.status === 'error'" @click="recorder = 'screen'">
+          <Icon name="screen" />
+          Record screen
+        </button>
+        <button v-if="canRecord" class="btn" type="button" :disabled="engine.status === 'error'" @click="recorder = 'camera'">
+          <Icon name="camera" />
+          Record video
         </button>
       </div>
       <p class="hint">Or drag it anywhere onto the page, or paste it.</p>

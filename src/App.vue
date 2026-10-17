@@ -9,12 +9,13 @@ import Filmstrip from './components/Filmstrip.vue'
 import JobHistory from './components/JobHistory.vue'
 import LogConsole from './components/LogConsole.vue'
 import PresetPicker from './components/PresetPicker.vue'
+import Recorder from './components/Recorder.vue'
 import ProcessPanel from './components/ProcessPanel.vue'
 import VideoStage from './components/VideoStage.vue'
 import { useConverter } from './composables/useConverter'
 import { CREDIT } from './credit'
 
-const { phase, source, open, convert, cancel, setTrimEdge, loadEngine, engine, togglePlay } = useConverter()
+const { phase, source, open, convert, cancel, setTrimEdge, loadEngine, engine, togglePlay, recorder, developing } = useConverter()
 const dragging = ref(false)
 let depth = 0
 
@@ -93,10 +94,11 @@ onBeforeUnmount(() => {
         </p>
 
         <Transition name="swap" mode="out-in">
-          <DropZone v-if="phase === 'empty'" key="drop" />
+          <Recorder v-if="phase === 'empty' && recorder" key="record" />
+          <DropZone v-else-if="phase === 'empty'" key="drop" />
           <CompareView v-else-if="phase === 'done'" key="compare" />
           <div v-else-if="!source" key="wait" class="waiting" role="status">
-            <span class="caps">Developing a test clip…</span>
+            <span class="caps">{{ developing }}</span>
           </div>
           <div v-else key="source" class="source">
             <VideoStage />
@@ -133,7 +135,7 @@ onBeforeUnmount(() => {
 
     <footer class="footer">
       <span>
-        Built by <a :href="CREDIT.url">{{ CREDIT.name }}</a>
+        Built by <a :href="CREDIT.url">{{ CREDIT.name }}</a> · <a :href="CREDIT.source">Source on GitHub</a>
       </span>
       <span>Powered by <a href="https://ffmpegwasm.netlify.app/">ffmpeg.wasm</a>. Your files never leave this device.</span>
     </footer>

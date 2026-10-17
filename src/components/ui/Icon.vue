@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  name: 'upload' | 'film' | 'download' | 'copy' | 'check' | 'close' | 'chevron' | 'sun' | 'moon' | 'play' | 'pause' | 'pattern' | 'terminal' | 'back' | 'alert'
+  name: 'upload' | 'film' | 'download' | 'copy' | 'check' | 'close' | 'chevron' | 'sun' | 'moon' | 'play' | 'pause' | 'terminal' | 'back' | 'alert' | 'camera' | 'screen' | 'mic' | 'record' | 'stop'
 }>()
 
 const paths: Record<typeof props.name, string> = {
@@ -15,10 +15,14 @@ const paths: Record<typeof props.name, string> = {
   moon: 'M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z',
   play: 'M7 5v14l12-7z',
   pause: 'M7 5h3.5v14H7zM13.5 5H17v14h-3.5z',
-  pattern: 'M4 5h16v14H4zM7.2 5v14M10.4 5v14M13.6 5v14M16.8 5v14',
   terminal: 'M4 5h16v14H4zM7.5 9.5 10 12l-2.5 2.5M12 15h4.5',
   back: 'M10 6 4 12l6 6M4 12h16',
   alert: 'M12 4 2.5 20h19zM12 10v4.5M12 17.2v.3',
+  camera: 'M4 8h3.5l1.5-2.5h6L16.5 8H20v11H4zM12 17a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z',
+  screen: 'M3 5h18v12H3zM9 20h6M12 17v3',
+  mic: 'M12 3.5a3 3 0 0 1 3 3V12a3 3 0 0 1-6 0V6.5a3 3 0 0 1 3-3zM6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v3.5M8.5 20.5h7',
+  record: 'M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13z',
+  stop: 'M6.5 6.5h11v11h-11z',
 }
 </script>
 

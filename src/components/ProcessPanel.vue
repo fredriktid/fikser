@@ -17,6 +17,7 @@ const {
   convert,
   cancel,
   backToSettings,
+  reset,
   settings,
   trimLength,
   largeFile,
@@ -82,6 +83,7 @@ const shortcut = navigator.platform.toLowerCase().includes('mac') ? '⌘ Enter' 
           Download {{ result.container.toUpperCase() }}
         </a>
         <button class="btn" type="button" @click="backToSettings"><Icon name="back" /> Change settings</button>
+        <button class="btn btn-quiet" type="button" @click="reset"><Icon name="film" /> Another video</button>
       </div>
     </template>
 
